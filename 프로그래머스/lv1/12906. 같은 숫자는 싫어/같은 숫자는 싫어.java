@@ -8,8 +8,10 @@ public class Solution {
         int temp = -1;
         
         for(int n : arr) {
-            if(temp != n) list.add(n);
-            temp = n;
+            if(temp != n) {
+              list.add(n);
+              temp = n;
+            }
         }
 
         return list;
