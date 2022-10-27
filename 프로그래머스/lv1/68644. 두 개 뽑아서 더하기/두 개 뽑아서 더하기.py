@@ -1,10 +1,6 @@
 def solution(numbers):
     answer = []
-    for i in range(0, len(numbers)):
-        for j in range(i + 1, len(numbers)):
-            if numbers[i] + numbers[j] in answer:
-                continue
-            else :
-                answer.append(numbers[i] + numbers[j])
-
-    return sorted(answer)
+    for x in numbers:
+        for j in range(numbers.index(x)+1, len(numbers)):
+            answer.append(x + numbers[j])
+    return sorted(list(set(answer)))
