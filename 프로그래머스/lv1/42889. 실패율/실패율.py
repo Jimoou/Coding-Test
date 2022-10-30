@@ -1,6 +1,5 @@
 def solution(N, stages):
-
-    di = dict(zip(range(1,N+1), range(N)))
+    di = {}
     temp = 0
     for i in range (1, N+1):
         if stages.count(i) != 0:
@@ -8,6 +7,4 @@ def solution(N, stages):
         else:
             di[i] = 0
         temp += stages.count(i)
-
-
     return sorted(di, key=lambda x:di[x], reverse=True)
