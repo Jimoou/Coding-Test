@@ -9,11 +9,9 @@ def solution(nums):
             for k in range (j+1,len(nums)):
                 num.append(nums[i] + nums[j] + nums[k])
     for i in num:
-        flag = True
         for k in range (2, int(math.sqrt(i)) + 1):
             if bool(i % k == 0):
-                flag = False
                 break
-        if flag:
+        else:
             answer += 1
     return answer
