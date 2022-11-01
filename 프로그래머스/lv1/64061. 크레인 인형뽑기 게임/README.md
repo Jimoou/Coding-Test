@@ -1,10 +1,10 @@
 # [level 1] 크레인 인형뽑기 게임 - 64061 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/64061?language=java) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/64061?language=python3) 
 
 ### 성능 요약
 
-메모리: 80.1 MB, 시간: 0.97 ms
+메모리: 10.2 MB, 시간: 0.78 ms
 
 ### 구분
 
