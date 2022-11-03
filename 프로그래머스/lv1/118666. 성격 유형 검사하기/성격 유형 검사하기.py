@@ -2,8 +2,7 @@ from itertools import islice
 
 
 def solution(survey, choices):
-    score = [0,0,0,0,0,0,0,0]
-    type_Board = dict(zip('RTCFJMAN', score))
+    type_Board = {'R': 0, 'T': 0, 'C': 0, 'F': 0, 'J': 0, 'M': 0, 'A': 0, 'N': 0}
     for i in range(len(choices)):
         type = list(survey[i])
         if choices[i] < 4:
