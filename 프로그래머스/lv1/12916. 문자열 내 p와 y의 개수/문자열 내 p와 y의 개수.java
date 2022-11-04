@@ -3,14 +3,13 @@ class Solution {
         boolean answer = true;
         int cntP = 0;
         int cntY = 0;
-        char ch = ' ';
         
         for (int i = 0; i < s.length(); i++) {
-		ch = s.charAt(i);
-		if(ch == 'p' || ch == 'P') {
-                 cntP++;
-               } else if (ch == 'y' || ch == 'Y') {
-                 cntY++;
+			String word = String.valueOf(s.charAt(i));
+			if("p".equalsIgnoreCase(word)) {
+                cntP++;
+            } else if ("y".equalsIgnoreCase(word)) {
+                cntY++;
             }
         }
         if (cntP == cntY) {
