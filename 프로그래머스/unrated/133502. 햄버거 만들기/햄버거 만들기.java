@@ -1,30 +1,26 @@
 import java.util.Stack;
 class Solution {
     public int solution(int[] ingredient) {
-        return packed_Burger(ingredient);
-    }
-
-    private static int packed_Burger(int[] ingredient) {
-        StringBuilder ingredients = new StringBuilder();
-        int count = 0;
-        for(int num=0; num < ingredient.length; num++) {
-            ingredients.append(ingredient[num]);
-            if (ingredient[num] == 1 && ingredients.length() > 3) {
-                if (make_Burger(ingredients)) {
-                    count++;
-                }
+        Stack<Integer> ingredients = new Stack<>();
+        int count_Burger = 0;
+        for (int num = 0; num < ingredient.length; num++) {
+            ingredients.push(ingredient[num]);
+            int size = ingredients.size();
+            if (size >3 && ingredients.peek() == 1
+            && ingredients.get(size-2) == 3
+            && ingredients.get(size-3) == 2
+            && ingredients.get(size-4) == 1) {
+                packaging_Burger(ingredients);
+                count_Burger++;
             }
         }
-        return count;
+        return count_Burger;
     }
 
-    private static boolean make_Burger(StringBuilder ingredients) {
-        if(ingredients.length()>3 && ingredients.subSequence(
-                                        ingredients.length()-4,
-                                        ingredients.length()).equals("1231")) {
-            ingredients.delete(ingredients.length()-4, ingredients.length());
-            return true;
-        }
-        return false;
+    private static void packaging_Burger(Stack<Integer> ingredients) {
+        ingredients.pop();
+        ingredients.pop();
+        ingredients.pop();
+        ingredients.pop();
     }
 }
