@@ -5,8 +5,8 @@ class Solution {
         int cntY = 0;
         
         for (int i = 0; i < s.length(); i++) {
-			String word = String.valueOf(s.charAt(i));
-			if("p".equalsIgnoreCase(word)) {
+	    String word = String.valueOf(s.charAt(i));
+	    if("p".equalsIgnoreCase(word)) {
                 cntP++;
             } else if ("y".equalsIgnoreCase(word)) {
                 cntY++;
