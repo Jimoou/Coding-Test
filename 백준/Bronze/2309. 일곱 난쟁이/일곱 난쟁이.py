@@ -1,22 +1,22 @@
-def solution(dwarf_Heights, a, b):
+def solution(a, b):
     sum = 0
-    for i in range(len(dwarf_Heights)):
-        if i == a or i == b:
-            continue
-        else:
-           sum += dwarf_Heights[i]
+    for num in range(9):
+        if num not in [a, b]:
+           sum += dwarf_Heights[num]
     return sum
 if __name__ == '__main__':
     dwarf_Heights = []
-    for i in range(0, 9):
+    for _ in range(9):
         dwarf_Heights.append(int(input()))
-    for a in range(len(dwarf_Heights)):
-        for b in range(a+1,len(dwarf_Heights)):
-            if solution(dwarf_Heights, a, b) == 100:
+    dwarf_Heights.sort()
+    
+    n1,n2 = 0,0
+    for a in range(9):
+        for b in range(a+1,9):
+            if solution(a, b) == 100:
                 n1 = a
                 n2 = b
-    dwarf_Heights.remove(dwarf_Heights[n2])
-    dwarf_Heights.remove(dwarf_Heights[n1])
-    dwarf_Heights.sort()
+                
     for heights in dwarf_Heights:
-        print(heights)
+        if heights not in [dwarf_Heights[n1],dwarf_Heights[n2]]:
+            print(heights)
