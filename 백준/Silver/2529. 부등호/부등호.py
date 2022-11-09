@@ -17,7 +17,7 @@ for num in permutations(integerList, K + 1):
         if check == False:
             break
     if check == True:
-        answerList.append(''.join(str(n) for n in num))
+        answerList.append(num)
 
-print(max(answerList))
-print(min(answerList))
+print(''.join(str(n) for n in (max(answerList))))
+print(''.join(str(n) for n in (min(answerList))))
