@@ -1,14 +1,14 @@
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.Arrays;
 class Solution {
     public int solution(int k, int m, int[] score) {
-        int sum = 0;
-        List<Integer> appleScores = Arrays.stream(score).boxed().collect(Collectors.toList());
-        Collections.sort(appleScores);
-        for (int pack = m; pack <= score.length; pack+=m) {
-            List<Integer> box = appleScores.subList(score.length-pack, score.length-pack+m);
-            sum += Collections.min(box)*m;
+        int answer = 0;
+
+        Arrays.sort(score);
+
+        for(int i = score.length; i >= m; i -= m){
+            answer += score[i - m] * m;
         }
-        return sum;
-}
+
+        return answer;
+    }
 }
