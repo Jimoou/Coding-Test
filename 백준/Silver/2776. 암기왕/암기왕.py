@@ -1,28 +1,29 @@
-def binary_search(val):
-    l = 0
-    r = n1 - 1
+import sys
 
-    while l <= r:
-        m = (l + r) // 2
-        if val == note1[m]:
+
+def binary_search(num):
+    L = 0
+    R = N - 1
+    while L <= R:
+        mid = (L + R) // 2
+        if num == note_No1[mid]:
             return 1
-        elif val < note1[m]:
-            r = m - 1
+        elif num < note_No1[mid]:
+            R = mid - 1
         else:
-            l = m + 1
-
+            L = mid + 1
     return 0
 
 
-if __name__ == "__main__":
-    N = int(input())
+if __name__ == '__main__':
+    T = int(input())
+    for test in range(T):
+        N = int(input())
+        note_No1 = list(map(int, sys.stdin.readline().split()))
+        M = int(input())
+        note_No2 = list(map(int, sys.stdin.readline().split()))
 
-    for _ in range(N):
-        n1 = int(input())
-        note1 = list(map(int, input().split()))
-        n2 = int(input())
-        note2 = list(map(int, input().split()))
-        note1.sort()
+        note_No1.sort()
 
-        for value in note2:
-            print(binary_search(value))
+        for num in note_No2:
+            print(binary_search(num))
