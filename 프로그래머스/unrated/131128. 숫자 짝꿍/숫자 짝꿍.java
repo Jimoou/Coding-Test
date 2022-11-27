@@ -1,5 +1,6 @@
 import java.util.*;
 class Solution {
+    //다른 인터페이스를 사용하면 시간초과가 난다ㅣ
     public String solution(String X, String Y) {
         StringBuilder answer = new StringBuilder();
         TreeMap<Character, Integer> htX = new TreeMap<>(Collections.reverseOrder());
