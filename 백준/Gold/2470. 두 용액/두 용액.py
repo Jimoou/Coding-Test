@@ -1,28 +1,29 @@
-n = int(input())
-liquid = list(map(int, input().split(' ')))
-liquid.sort()
+import sys
 
-left = 0
-right = n - 1
+if __name__ == '__main__':
+    N = int(sys.stdin.readline())
+    A = list(map(int, sys.stdin.readline().split()))
 
-min_Value = abs(liquid[left] + liquid[right])
-result = [liquid[left], liquid[right]]
+    start = 0
+    end = N-1
 
-while left < right:
-    left_val = liquid[left]
-    right_val = liquid[right]
+    max_sum = sys.maxsize
 
-    mixed_Liquid = left_val + right_val
+    liquid1 = 0
+    liquid2 = 0
 
-    if abs(mixed_Liquid) < min_Value:
-        min_Value = abs(mixed_Liquid)
-        result = [left_val, right_val]
-        if min_Value == 0:
-            break
-            
-    if mixed_Liquid < 0:
-        left += 1
-    else:
-        right -= 1
+    A.sort()
 
-print(result[0], result[1])
+    while start < end:
+        curSum = A[start] + A[end]
+        if abs(curSum) < max_sum:
+            max_sum = abs(curSum)
+            liquid1 = A[start]
+            liquid2 = A[end]
+
+        if curSum > 0:
+            end -= 1
+        else:
+            start += 1
+
+    print(liquid1, liquid2)
