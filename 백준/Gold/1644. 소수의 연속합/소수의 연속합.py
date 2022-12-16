@@ -1,29 +1,40 @@
 import sys
 
-if __name__ == '__main__':
-    N = int(sys.stdin.readline())
-    A = [True for i in range(N + 1)]
-    primeNums = []
-    for i in range(2, int(N ** 0.5) + 1):
+
+def PrimeNums(n):
+    A = [True for i in range(n + 1)]
+    B = []
+    for i in range(2, int(n ** 0.5) + 1):
         if A[i]:
             j = 2
             while i * j <= N:
-                A[i*j] = False
+                A[i * j] = False
                 j += 1
 
-    for num in range(2, N + 1):
-        if A[num]:
-            primeNums.append(num)
+    for k in range(2, n + 1):
+        if A[k]:
+            B.append(k)
+
+    return B
+
+
+if __name__ == '__main__':
+    N = int(sys.stdin.readline())
+
+    prime_Nums = PrimeNums(N)
 
     end = 0
-    sum = 0
+    curSum = 0
     count = 0
-    for start in range(len(primeNums)):
-        while sum < N and end < len(primeNums):
-            sum += primeNums[end]
+
+    for start in range(len(prime_Nums)):
+        while curSum < N and end < len(prime_Nums):
+            curSum += prime_Nums[end]
             end += 1
-        if sum == N:
+
+        if curSum == N:
             count += 1
-        sum -= primeNums[start]
+
+        curSum -= prime_Nums[start]
 
     print(count)
