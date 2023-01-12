@@ -1,18 +1,18 @@
 import sys
 from itertools import permutations
 
-K = int(input())
-inequalities = list(map(str, sys.stdin.readline().split()))
-integerList = [x for x in range(10)]
+N = int(input())
+A = list(map(str, sys.stdin.readline().split()))
+Nums = [x for x in range(10)]
 answerList = []
-for num in permutations(integerList, K + 1):
-    for x in range(len(num)-1):
+for num in permutations(Nums, N + 1):
+    for i in range(len(num) - 1):
         check = False
-        if inequalities[x] == '>':
-            if num[x] > num[x+1]:
+        if A[i] == '>':
+            if num[i] > num[i + 1]:
                 check = True
         else:
-            if num[x] < num[x+1]:
+            if num[i] < num[i + 1]:
                 check = True
         if check == False:
             break
