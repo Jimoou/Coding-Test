@@ -1,20 +1,15 @@
-import math
+import sys
 
+if __name__ == '__main__':
+    N = int(sys.stdin.readline())
 
-def binary_search(n):
-    left, right = 0, n - 1
+    start = 0
+    end = N - 1
+    while start <= end:
+        mid = (start + end) // 2
 
-    while left <= right:
-        middle = (left + right) // 2
-
-        if middle**2 < n:
-            left = middle + 1
+        if mid ** 2 < N:
+            start = mid + 1
         else:
-            right = middle - 1
-
-    return left
-
-if __name__ == "__main__":
-    N = int(input())
-
-    print(binary_search(N))
+            end = mid - 1
+    print(start)
