@@ -1,43 +1,38 @@
 import sys
 
 
-def PrimeNums(n):
-    root = int(n ** 0.5)
-    if root % 2 == 0:
-        root += 1
-    sieve = [None] * (n // 2 + 2)
-    ret = [2]
-    for i in range(1, (root + 1) // 2):
-        if not sieve[i]:
-            ret.append(2 * i + 1)
-            t = 2 * i + 1
-            for j in range((t * t) // 2, n // 2 + 1, t):
-                sieve[j] = True
-    for i in range((root + 1) // 2, n // 2 + 1):
-        if not sieve[i]:
-            ret.append(2 * i + 1)
-    if ret[-1] > n:
-        ret.pop()
-    return ret
+def primeNums(n):
+    A = [True for i in range(n + 1)]
+    B = []
+    for i in range(2, int(n ** 0.5) + 1):
+        if A[i]:
+            j = 2
+            while i * j <= N:
+                A[i * j] = False
+                j += 1
+    for k in range(2, n + 1):
+        if A[k]:
+            B.append(k)
+    return B
 
 
 if __name__ == '__main__':
     N = int(sys.stdin.readline())
 
-    prime_Nums = PrimeNums(N)
+    prime_nums = primeNums(N)
 
     end = 0
-    curSum = 0
-    count = 0
+    primeSum = 0
+    cnt = 0
 
-    for start in range(len(prime_Nums)):
-        while curSum < N and end < len(prime_Nums):
-            curSum += prime_Nums[end]
+    for start in range(len(prime_nums)):
+        while primeSum < N and end < len(prime_nums):
+            primeSum += prime_nums[end]
             end += 1
 
-        if curSum == N:
-            count += 1
+        if primeSum == N:
+            cnt += 1
 
-        curSum -= prime_Nums[start]
+        primeSum -= prime_nums[start]
 
-    print(count)
+    print(cnt)
