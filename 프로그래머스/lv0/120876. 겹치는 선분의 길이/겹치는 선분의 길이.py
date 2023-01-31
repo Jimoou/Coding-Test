@@ -1,3 +1,10 @@
 def solution(lines):
-    sets = [set(range(min(l), max(l))) for l in lines]
-    return len(sets[0] & sets[1] | sets[0] & sets[2] | sets[1] & sets[2])
+    starts = [min(a) for a in lines]
+    ends = [max(a) for a in lines]
+    starts.sort()
+    ends.sort()
+    answer = 0
+    answer += max(0,ends[0] - starts[1])
+    answer += max(0, ends[1] - starts[2])
+    answer -= max(0, ends[0] - starts[2])
+    return answer
