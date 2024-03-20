@@ -1,14 +1,16 @@
 class Solution {
     public int solution(int[] bandage, int health, int[][] attacks) {
-            int currentHP = health;
+        
+    int currentHP = health;
     int lastAttackTime = attacks[attacks.length - 1][0];
-    int count = 0;
+    int countinous = 0;
     boolean attacked = false;
 
-    for (int t = 1; t <= lastAttackTime; t++) {
-      for (int i = 0; i < attacks.length; i++) {
-        if (t == attacks[i][0]) {
-          currentHP -= attacks[i][1];
+    int t = 1;
+    while (t <= lastAttackTime) {
+      for (int[] attack : attacks) {
+        if (t == attack[0]) {
+          currentHP -= attack[1];
           if (currentHP <= 0) {
             return -1;
           }
@@ -16,19 +18,20 @@ class Solution {
         }
       }
       if (attacked) {
-        count = 0;
+        countinous = 0;
       } else {
         currentHP += bandage[1];
-        count++;
-        if (count == bandage[0]) {
+        countinous++;
+        if (countinous == bandage[0]) {
           currentHP += bandage[2];
-          count = 0;
+          countinous = 0;
         }
         if (currentHP > health) {
           currentHP = health;
         }
       }
       attacked = false;
+      t++;
     }
     return currentHP;
   }
